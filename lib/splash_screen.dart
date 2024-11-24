@@ -12,7 +12,7 @@ class spalshScreen extends StatefulWidget {
 class _spalshScreenState extends State<spalshScreen> {
   @override
   void initState() {
-    
+
     Future.delayed(Duration(seconds: 3)).then((value){
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainScreen()));
     });
@@ -21,22 +21,24 @@ class _spalshScreenState extends State<spalshScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: SolidColors.scaffoldBgColor,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              Assets.images.logo.path,
-              width: 120,
-              height: 120,
-            ),
-            SpinKitFadingCube(
-              color: SolidColors.primaryColor,
-              size: 40.0,
-            )
-          ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: SolidColors.scaffoldBgColor,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                Assets.images.logo.path,
+                width: 120,
+                height: 120,
+              ),
+              SpinKitFadingCube(
+                color: SolidColors.primaryColor,
+                size: 40.0,
+              )
+            ],
+          ),
         ),
       ),
     );

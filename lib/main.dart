@@ -37,6 +37,18 @@ class MyApp extends StatelessWidget {
         ),
           fontFamily: FontFamily.iranYekan,
           textTheme: const TextTheme(
+            //headline1
+            displayLarge: TextStyle(
+              color: SolidColors.posterTitleColor,
+                fontSize: 18,
+                fontWeight: FontWeight.w700
+            ),
+              //subtitle1
+              titleMedium: TextStyle(
+                color: SolidColors.posterSubTitleColor,
+                fontSize: 14,
+                fontWeight: FontWeight.w300
+              ),
               bodyLarge: TextStyle(
                   fontSize: 14,
                   color: SolidColors.textTitleColor,
@@ -53,3 +65,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

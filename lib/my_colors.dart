@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 class SolidColors {
+  static const Color posterTitleColor = Color(0xffffffff);
+  static const Color posterSubTitleColor = Color.fromARGB(200, 255, 255, 255);
   static const Color primaryColor = Color(0xff440457);
   static const Color titleColor = Color(0xff286BB8);
   static const Color textTitleColor = Color(0xff000000);
@@ -27,6 +29,12 @@ class GradientColors {
   static const List<Color> headerPostsGradient = [
     Color(0xff2E0347),
     Color(0xff808080)
+  ];
+
+  static const List<Color> onPosterGradient = [
+    Color.fromRGBO(40, 41, 46, 0),
+    Color.fromRGBO(72, 20, 88, 0.5),
+    Color.fromRGBO(28, 20, 81, 1),
   ];
 
 }
