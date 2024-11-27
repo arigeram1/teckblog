@@ -3,11 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tec/gen/fonts.gen.dart';
 import 'package:tec/my_colors.dart';
-import 'package:tec/splash_screen.dart';
+import 'package:tec/view/splash_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
+    const SystemUiOverlayStyle(
       statusBarColor: SolidColors.statusBarColor,
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: SolidColors.navigationBarColor,
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
@@ -32,8 +32,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tech Blog',
       theme: ThemeData(
-        colorScheme: ColorScheme.light(
+        colorScheme: const ColorScheme.light(
           surface: SolidColors.scaffoldBgColor,
+          primary: Colors.white,
         ),
           fontFamily: FontFamily.iranYekan,
           textTheme: const TextTheme(
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.w700),
               bodyMedium: TextStyle(
                   fontSize: 14,
-                  color: Color(0xff2C7DB4),
+                  color: Colors.black,
                   fontWeight: FontWeight.w300),
               headlineMedium: TextStyle(
                   fontSize: 14,
@@ -65,4 +66,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

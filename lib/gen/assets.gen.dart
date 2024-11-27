@@ -9,11 +9,37 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/feather.png
+  AssetGenImage get feather => const AssetGenImage('assets/icons/feather.png');
+
+  /// File path: assets/icons/home.png
+  AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
+
+  /// File path: assets/icons/microphone.png
+  AssetGenImage get microphone =>
+      const AssetGenImage('assets/icons/microphone.png');
+
+  /// File path: assets/icons/pencil.png
+  AssetGenImage get pencil => const AssetGenImage('assets/icons/pencil.png');
+
+  /// File path: assets/icons/user.png
+  AssetGenImage get user => const AssetGenImage('assets/icons/user.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [feather, home, microphone, pencil, user];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/profile.png
+  AssetGenImage get profile => const AssetGenImage('assets/images/profile.png');
 
   /// File path: assets/images/programming.png
   AssetGenImage get programming =>
@@ -26,12 +52,13 @@ class $AssetsImagesGen {
   AssetGenImage get tag => const AssetGenImage('assets/images/tag.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [logo, programming, search, tag];
+  List<AssetGenImage> get values => [logo, profile, programming, search, tag];
 }
 
 class Assets {
   Assets._();
 
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
