@@ -14,6 +14,8 @@ class SolidColors {
   static const Color dividerColor = Color(0xff707070);
   static const Color playedPodcastColor = Color(0xffFF8B1A);
   static const Color userNameColor = Color(0xff420457);
+  static const Color RegisterColor = Color(0xff6B6B6B);
+  static const Color hintTextColor = Color(0xffDBDBDB);
   static const Color subTextColor = Color.fromARGB(255, 197, 197, 197);
 
 }

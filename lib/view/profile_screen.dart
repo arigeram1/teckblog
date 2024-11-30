@@ -17,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 60),
+      padding: const EdgeInsets.only(top: 45),
       child: Column(
         children: [
           Image.asset(
@@ -27,13 +27,13 @@ class ProfileScreen extends StatelessWidget {
           const SizedBox(height: 10,),
           EditProfileTextRow(bodyMargin: bodyMargin, textTheme: textTheme),
           const SizedBox(height: 50,),
-           Text('فاطمه امیری' , style: textTheme.displayLarge!.copyWith(color: SolidColors.userNameColor)),
+           Text('آرین گرامی' , style: textTheme.displayLarge!.copyWith(color: SolidColors.userNameColor)),
           const SizedBox(height: 6,),
-           Text('fatemeamiri@gmail.com', style: textTheme.displayLarge!.copyWith(color: Colors.black)),
+           Text('arigerami@gmail.com', style: textTheme.displayLarge!.copyWith(color: Colors.black)),
           const SizedBox(height: 40,),
           // Divider Segment
-          SizedBox(
-            height: size.height/3,
+          Container(
+            height: size.height/13,
             child: Column(
               children: [
                 techDivider(size: size),
@@ -41,32 +41,47 @@ class ProfileScreen extends StatelessWidget {
                   splashColor: SolidColors.primaryColor,
                   onTap: (){},
                   child:
-                   SizedBox(
+                  SizedBox(
                       height: size.height/18,
                       child: const Center(child: Text(MyStrings.myFavoriteBlog))),
                 ),
+              ],
+            ),
+          ),
+
+          Container(
+            height: size.height/13,
+            child: Column(
+              children: [
                 techDivider(size: size),
                 InkWell(
                   splashColor: SolidColors.primaryColor,
                   onTap: (){},
                   child:
-                   SizedBox(
+                  SizedBox(
                       height: size.height/18,
                       child: const Center(child: Text(MyStrings.myFavoritePodcast))),
                 ),
+              ],
+            ),
+          ),
+          Container(
+            height: size.height/13,
+            child: Column(
+              children: [
                 techDivider(size: size),
                 InkWell(
                   splashColor: SolidColors.primaryColor,
                   onTap: (){},
                   child:
-                   SizedBox(
+                  SizedBox(
                       height: size.height/18,
                       child: const Center(child: Text(MyStrings.logOutText))),
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 40,),
+          const SizedBox(height: 60,),
         ],
       ),
     );

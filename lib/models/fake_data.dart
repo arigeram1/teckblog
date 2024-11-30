@@ -16,10 +16,10 @@ List<HashTag> listTags = [
   HashTag(title: 'متفرقه'),
   HashTag(title: 'بازی'),
   HashTag(title: 'سرگرمی'),
-  HashTag(title: 'سولالالاری'),
+  HashTag(title: 'برنامه نویسی موبایل'),
   HashTag(title: 'برنامه نویسی وب'),
   HashTag(title: 'هوش مصنوعی'),
-  HashTag(title: 'چرتو پرت'),
+  HashTag(title: 'پردازش تصویر'),
 ];
 
 

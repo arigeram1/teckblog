@@ -3,7 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tec/gen/fonts.gen.dart';
 import 'package:tec/my_colors.dart';
+import 'package:tec/view/mycategories_screen.dart';
+import 'package:tec/view/register_intro.dart';
 import 'package:tec/view/splash_screen.dart';
+
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -22,7 +25,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    var textTheme = Theme.of(context).textTheme;
     return MaterialApp(
+
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -32,6 +38,35 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tech Blog',
       theme: ThemeData(
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(width: 2)
+          ),
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: const BorderSide(width: 1))
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            minimumSize: WidgetStatePropertyAll(
+                Size(size.width/2.54,size.height/15.46)),
+            shape: WidgetStatePropertyAll(
+              RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)
+              ),
+            ),
+            backgroundColor: const WidgetStatePropertyAll(SolidColors.primaryColor),
+            textStyle: WidgetStateProperty.resolveWith((states){
+              if(states.contains(WidgetState.pressed)){
+                return textTheme.titleMedium;
+              }else{
+                return textTheme.titleMedium;
+              }
+            }),
+            // foregroundColor: const WidgetStatePropertyAll(Colors.white),
+          ),
+        ),
         colorScheme: const ColorScheme.light(
           surface: SolidColors.scaffoldBgColor,
           primary: Colors.white,
@@ -46,6 +81,7 @@ class MyApp extends StatelessWidget {
             ),
               //subtitle1
               titleMedium: TextStyle(
+                fontFamily: FontFamily.iranYekan,
                 color: SolidColors.posterSubTitleColor,
                 fontSize: 14,
                 fontWeight: FontWeight.w300
@@ -61,8 +97,19 @@ class MyApp extends StatelessWidget {
               headlineMedium: TextStyle(
                   fontSize: 14,
                   color: Color.fromARGB(255, 70, 70, 70),
-                  fontWeight: FontWeight.w300))),
-      home: spalshScreen(),
+                  fontWeight: FontWeight.w300),
+              headlineSmall: TextStyle(
+                  fontSize: 14,
+                  color: SolidColors.hintTextColor,
+                  fontWeight: FontWeight.w300),
+            headlineLarge: TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+                fontWeight: FontWeight.w300),
+          ),
+
+      ),
+      home: MyCategories(),
     );
   }
 }

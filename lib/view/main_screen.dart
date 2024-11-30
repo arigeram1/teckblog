@@ -1,8 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tec/my_colors.dart';
 import 'package:tec/gen/assets.gen.dart';
+import 'package:tec/view/homeScreen.dart';
 import 'package:tec/view/profile_screen.dart';
-class MainScreen extends StatelessWidget {
+import 'package:tec/view/register_intro.dart';
+
+class MainScreen extends StatefulWidget {
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  var selectedScreenIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -14,13 +25,26 @@ class MainScreen extends StatelessWidget {
         appBar: AppBar(
           title: MyAppBar(size: size),
         ),
-        body:
-        Stack(
+        body: Stack(
           children: [
-            Center(child: ProfileScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin)),
+            IndexedStack(
+              index: selectedScreenIndex,
+              children: [
+                HomeScreen(
+                    size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                ProfileScreen(
+                    size: size, textTheme: textTheme, bodyMargin: bodyMargin)
+              ],
+            ),
             //bottomNavigation Segment
-            BottomNav(size: size)
-
+            BottomNav(
+              size: size,
+              changeScreen: (int value) {
+                setState(() {
+                  selectedScreenIndex = value;
+                });
+              },
+            )
           ],
         ),
       ),
@@ -28,15 +52,15 @@ class MainScreen extends StatelessWidget {
   }
 }
 
-
-
 class BottomNav extends StatelessWidget {
   const BottomNav({
     super.key,
     required this.size,
+    required this.changeScreen,
   });
 
   final Size size;
+  final Function(int) changeScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +72,11 @@ class BottomNav extends StatelessWidget {
           right: 0,
           bottom: 0,
           child: Container(
-            height: size.height/5.89,
+            height: size.height / 5.89,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                  colors: GradientColors.behindNavBottomGradient,
-              begin: Alignment.topCenter,
+                colors: GradientColors.behindNavBottomGradient,
+                begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
             ),
@@ -60,28 +84,40 @@ class BottomNav extends StatelessWidget {
         ),
         // bottomNav segment
         Positioned(
-          left: size.width/7,
-          right: size.width/7,
+          left: size.width / 7,
+          right: size.width / 7,
           bottom: 10,
           child: Container(
-            height: size.height/12.35,
+            height: size.height / 12.35,
             decoration: BoxDecoration(
-                gradient: const LinearGradient(colors:
-                GradientColors.bottomNavGradient
-                ),
-                borderRadius: BorderRadius.circular(20)
-            ),
+                gradient: const LinearGradient(
+                    colors: GradientColors.bottomNavGradient),
+                borderRadius: BorderRadius.circular(20)),
             child: Row(
               children: [
                 Expanded(
-                    child: ImageIcon(AssetImage(Assets.icons.home.path) , color: SolidColors.navigationBottomIconsColor,)
-                ),
+                    child: InkWell(
+                        onTap: () => changeScreen(0),
+                        child: ImageIcon(
+                          AssetImage(Assets.icons.home.path),
+                          color: SolidColors.navigationBottomIconsColor,
+                        ))),
                 Expanded(
-                    child: ImageIcon(AssetImage(Assets.icons.feather.path), color: SolidColors.navigationBottomIconsColor,)
-                ),
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.of(context).push(CupertinoPageRoute(builder: (context) => RegisterIntro(),));
+                      },
+                        child: ImageIcon(
+                  AssetImage(Assets.icons.feather.path),
+                  color: SolidColors.navigationBottomIconsColor,
+                ))),
                 Expanded(
-                    child: ImageIcon(AssetImage(Assets.icons.user.path), color: SolidColors.navigationBottomIconsColor,)
-                ),
+                    child: InkWell(
+                        onTap: () => changeScreen(1),
+                        child: ImageIcon(
+                          AssetImage(Assets.icons.user.path),
+                          color: SolidColors.navigationBottomIconsColor,
+                        ))),
               ],
             ),
           ),
@@ -90,8 +126,6 @@ class BottomNav extends StatelessWidget {
     );
   }
 }
-
-
 
 class MyAppBar extends StatelessWidget {
   const MyAppBar({
