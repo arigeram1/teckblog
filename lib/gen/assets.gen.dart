@@ -38,6 +38,9 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/arrow.png
+  AssetGenImage get arrow => const AssetGenImage('assets/images/arrow.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -58,7 +61,8 @@ class $AssetsImagesGen {
   AssetGenImage get tag => const AssetGenImage('assets/images/tag.png');
 
   /// List of all assets
-  List<dynamic> get values => [logo, profile, programming, robot, search, tag];
+  List<dynamic> get values =>
+      [arrow, logo, profile, programming, robot, search, tag];
 }
 
 class Assets {

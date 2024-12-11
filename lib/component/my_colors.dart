@@ -16,6 +16,7 @@ class SolidColors {
   static const Color userNameColor = Color(0xff420457);
   static const Color RegisterColor = Color(0xff6B6B6B);
   static const Color hintTextColor = Color(0xffDBDBDB);
+  static const Color surfaceColor = Color(0xffF2F2F2);
   static const Color subTextColor = Color.fromARGB(255, 197, 197, 197);
 
 }
