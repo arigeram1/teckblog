@@ -111,7 +111,7 @@ class MyApp extends StatelessWidget {
           ),
 
       ),
-      home: MyCategories()
+      home: MainScreen()
     );
   }
 }

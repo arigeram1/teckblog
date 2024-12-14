@@ -1,6 +1,7 @@
 class MyStrings {
 
   static const String viewHotestPosts = 'مشاهده داغ ترین نوشته ها';
+  static const String techBlogGithubUrl = 'https://github.com/arigeram1/teckblog';
   static const String viewHotestPodcasts = 'مشاهده داغ ترین پادکست ها';
   static const String relatedPosts = 'نوشته های مرتبط';
   static const String editProfileImage = 'ویرایش عکس پروفایل';
@@ -13,10 +14,13 @@ class MyStrings {
   static const String enterActivateCodeText = 'کد فعال سازی رو وارد کن';
   static const String faveCategoriesText = 'دسته بندی هایی که دوست داری رو انتخاب کن';
   static const String welcomeText = """به تک‌بلاگ خوش اومدی
-
+ 
 برای ارسال مطلب و پادکست باید حتما 
 ثبت نام کنی """;
 
-
+  static const String shareText = """
+  به تک بلاپ بپیوند !
+  www.google.com
+  """;
 
 }

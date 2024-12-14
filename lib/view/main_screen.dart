@@ -1,23 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tec/component/api_constant.dart';
+import 'package:tec/component/my_component.dart';
+import 'package:tec/services/dio_service.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:tec/component/my_colors.dart';
+import 'package:tec/component/my_strings.dart';
 import 'package:tec/gen/assets.gen.dart';
 import 'package:tec/view/home_screen.dart';
 import 'package:tec/view/profile_screen.dart';
 import 'package:tec/view/register_intro.dart';
-
-class MainScreen extends StatefulWidget {
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
+import 'package:share_plus/share_plus.dart';
 
 
 
-class _MainScreenState extends State<MainScreen> {
-  var selectedScreenIndex = 0;
+
+class MainScreen extends StatelessWidget {
+
+  RxInt selectedScreenIndex = 0.obs;
 
   @override
   Widget build(BuildContext context) {
+    DioService().getMethod(ApiConstant.getHomeItems);
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
     double bodyMargin = size.width / 13;
@@ -50,13 +55,17 @@ class _MainScreenState extends State<MainScreen> {
                   color: Colors.grey,
                 ),
                 ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Share.share(MyStrings.shareText);
+                    },
                     title: const Text('اشتراک گذاری تک بلاگ')),
                 const Divider(
                   color: Colors.grey,
                 ),
                 ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      myLaunchUrl(MyStrings.techBlogGithubUrl);
+                    },
                     title: const Text('تک‌بلاگ در گیت هاب'),),
 
               ],
@@ -69,22 +78,22 @@ class _MainScreenState extends State<MainScreen> {
         ),
         body: Stack(
           children: [
-            IndexedStack(
-              index: selectedScreenIndex,
-              children: [
-                HomeScreen(
-                    size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-                ProfileScreen(
-                    size: size, textTheme: textTheme, bodyMargin: bodyMargin)
-              ],
-            ),
+            Obx(() {
+              return IndexedStack(
+                index: selectedScreenIndex.value,
+                children: [
+                  HomeScreen(
+                      size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                  ProfileScreen(
+                      size: size, textTheme: textTheme, bodyMargin: bodyMargin)
+                ],
+              );
+            },),
             //bottomNavigation Segment
             BottomNav(
               size: size,
               changeScreen: (int value) {
-                setState(() {
-                  selectedScreenIndex = value;
-                });
+                selectedScreenIndex.value = value;
               },
             )
           ],
