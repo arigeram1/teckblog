@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tec/component/api_constant.dart';
 import 'package:tec/component/my_component.dart';
+import 'package:tec/controller/home_screen_controller.dart';
 import 'package:tec/services/dio_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:tec/component/my_colors.dart';
@@ -20,9 +21,12 @@ class MainScreen extends StatelessWidget {
 
   RxInt selectedScreenIndex = 0.obs;
 
+  HomeScreenController homeScreenController = Get.put(HomeScreenController());
+
+
   @override
   Widget build(BuildContext context) {
-    DioService().getMethod(ApiConstant.getHomeItems);
+
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
     double bodyMargin = size.width / 13;

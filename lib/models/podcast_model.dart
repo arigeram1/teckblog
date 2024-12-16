@@ -1,3 +1,5 @@
+import 'package:tec/component/api_constant.dart';
+
 class PodcastModel {
 
   String? id;
@@ -18,7 +20,7 @@ class PodcastModel {
 
     this.id = element["id"];
     this.title = element["title"];
-    this.poster = element["poster"];
+    this.poster =  ApiConstant.domainUrl + element["poster"];
     this.catName = element["cat_name"];
     this.author = element["author"];
     this.view = element["view"];

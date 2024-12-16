@@ -1,3 +1,5 @@
+import 'package:tec/component/api_constant.dart';
+
 class ArticleModel {
 
   String? id;
@@ -20,7 +22,7 @@ class ArticleModel {
 
      this.id = element["id"];
      this.title = element["title"];
-     this.image = element["image"];
+     this.image = ApiConstant.domainUrl + element["image"];
      this.catId = element["cat_id"];
      this.catName = element["cat_name"];
      this.author = element["author"];
