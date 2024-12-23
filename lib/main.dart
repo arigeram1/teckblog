@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 import 'package:tec/gen/fonts.gen.dart';
 import 'package:tec/component/my_colors.dart';
-import 'package:tec/view/home_screen.dart';
-import 'package:tec/view/main_screen.dart';
-import 'package:tec/view/mycategories_screen.dart';
-import 'package:tec/view/register_intro.dart';
-import 'package:tec/view/splash_screen.dart';
+import 'package:tec/view/article_list_screen.dart';
 
 
 void main() {
@@ -29,14 +25,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
-    return MaterialApp(
+    return GetMaterialApp(
 
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [Locale('fa')],
+      locale: const Locale('fa'),
+
+
       debugShowCheckedModeBanner: false,
       title: 'Tech Blog',
       theme: ThemeData(
@@ -111,7 +104,7 @@ class MyApp extends StatelessWidget {
           ),
 
       ),
-      home: MainScreen()
+      home: ArticleListScreen()
     );
   }
 }

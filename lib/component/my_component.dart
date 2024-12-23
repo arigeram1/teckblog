@@ -41,3 +41,29 @@ class loading extends StatelessWidget {
     );
   }
 }
+
+PreferredSize CustomizeAppbar(TextTheme textTheme , String title) {
+  return PreferredSize(
+    preferredSize: const Size.fromHeight(70),
+    child: Padding(
+      padding: const EdgeInsets.only(left: 40, right: 20 , top: 20),
+      child: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        actions: [
+          Text(title , style: textTheme.displayLarge!.copyWith(color: Colors.black),),
+        ],
+        leading: Container(
+          height: 40,
+          width: 40,
+          decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: SolidColors.appbarBackColor
+          ),
+          child:
+          const Icon(Icons.arrow_back, size: 33, color: Colors.white,),
+        ),
+      ),
+    ),
+  );
+}

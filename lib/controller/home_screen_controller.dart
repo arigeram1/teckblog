@@ -22,6 +22,8 @@ class HomeScreenController extends GetxController{
 
   getHomeItems() async{
 
+    // start of the commands for this get method
+
     loading.value = true;
 
 
@@ -53,6 +55,15 @@ class HomeScreenController extends GetxController{
 
       poster.value = PosterModel.fromJson(response.data['poster']);
 
+      //tags
+
+      response.data['tags'].forEach((element){
+
+        tagsList.add(TagsModel.fromJson(element));
+
+      });
+
+      // end of the commands for this get method
 
       loading.value = false;
 

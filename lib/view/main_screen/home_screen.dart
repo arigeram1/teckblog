@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                 height: 40,
               ),
               // scroll tags
-              ScrollTags(bodyMargin: bodyMargin, textTheme: textTheme),
+              ScrollTags(),
               const SizedBox(
                 height: 40,
               ),
@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-      ) : loading(),
+      ) : const loading(),
     );
   }
 
@@ -377,6 +377,47 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
+  Widget ScrollTags(){
+    return SizedBox(
+      height: size.height / 18,
+      child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemCount: homeScreenController.tagsList.length,
+          itemBuilder: (context, index) {
+            return Container(
+              padding: const EdgeInsets.fromLTRB(30, 4, 15, 8),
+              margin: EdgeInsets.fromLTRB(10, 0, index == 0 ? bodyMargin : 0, 0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                gradient: const LinearGradient(
+                  colors: GradientColors.tagsGradient,
+                  begin: Alignment.centerRight,
+                  end: Alignment.centerLeft,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Image.asset(
+                    Assets.images.tag.path,
+                    height: 16,
+                    width: 16,
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Text(
+                    homeScreenController.tagsList[index].title!,
+                    style: textTheme.titleMedium!
+                        .copyWith(color: Colors.white, fontSize: 16),
+                  )
+                ],
+              ),
+            );
+          }),
+    );
+  }
 }
 
 
@@ -447,62 +488,62 @@ class HottestBlogRow extends StatelessWidget {
   }
 }
 
-class ScrollTags extends StatelessWidget {
-  const ScrollTags({
-    super.key,
-    required this.bodyMargin,
-    required this.textTheme,
-  });
-
-  final double bodyMargin;
-  final TextTheme textTheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height / 18,
-      child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemCount: listTags.length,
-          itemBuilder: (context, index) {
-            return Container(
-              padding: const EdgeInsets.fromLTRB(30, 4, 15, 8),
-              margin: EdgeInsets.fromLTRB(
-                  index == listTags.length - 1 ? bodyMargin : 15,
-                  0,
-                  index == 0 ? bodyMargin : 0,
-                  0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                gradient: const LinearGradient(
-                  colors: GradientColors.tagsGradient,
-                  begin: Alignment.centerRight,
-                  end: Alignment.centerLeft,
-                ),
-              ),
-              child: Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset(
-                    Assets.images.tag.path,
-                    height: 16,
-                    width: 16,
-                  ),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  Text(
-                    listTags[index].title,
-                    style: textTheme.titleMedium!
-                        .copyWith(color: Colors.white, fontSize: 16),
-                  )
-                ],
-              ),
-            );
-          }),
-    );
-  }
-}
+// class ScrollTags extends StatelessWidget {
+//   const ScrollTags({
+//     super.key,
+//     required this.bodyMargin,
+//     required this.textTheme,
+//   });
+//
+//   final double bodyMargin;
+//   final TextTheme textTheme;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       height: MediaQuery.of(context).size.height / 18,
+//       child: ListView.builder(
+//           physics: const BouncingScrollPhysics(),
+//           scrollDirection: Axis.horizontal,
+//           itemCount: listTags.length,
+//           itemBuilder: (context, index) {
+//             return Container(
+//               padding: const EdgeInsets.fromLTRB(30, 4, 15, 8),
+//               margin: EdgeInsets.fromLTRB(
+//                   index == listTags.length - 1 ? bodyMargin : 15,
+//                   0,
+//                   index == 0 ? bodyMargin : 0,
+//                   0),
+//               decoration: BoxDecoration(
+//                 borderRadius: BorderRadius.circular(20),
+//                 gradient: const LinearGradient(
+//                   colors: GradientColors.tagsGradient,
+//                   begin: Alignment.centerRight,
+//                   end: Alignment.centerLeft,
+//                 ),
+//               ),
+//               child: Row(
+//                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                 children: [
+//                   Image.asset(
+//                     Assets.images.tag.path,
+//                     height: 16,
+//                     width: 16,
+//                   ),
+//                   const SizedBox(
+//                     width: 16,
+//                   ),
+//                   Text(
+//                     listTags[index].title,
+//                     style: textTheme.titleMedium!
+//                         .copyWith(color: Colors.white, fontSize: 16),
+//                   )
+//                 ],
+//               ),
+//             );
+//           }),
+//     );
+//   }
+// }
 
 

@@ -12,11 +12,13 @@ class SolidColors {
   static const Color navigationBottomIconsColor = Color(0xffffffff);
   static const Color lightTextColor = Color(0xffffffff);
   static const Color dividerColor = Color(0xff707070);
+  static const Color tagsColor = Color(0xffF2F2F2);
   static const Color playedPodcastColor = Color(0xffFF8B1A);
   static const Color userNameColor = Color(0xff420457);
   static const Color RegisterColor = Color(0xff6B6B6B);
   static const Color hintTextColor = Color(0xffDBDBDB);
   static const Color surfaceColor = Color(0xffF2F2F2);
+  static const Color appbarBackColor = Color(0xff9778AF);
   static const Color subTextColor = Color.fromARGB(255, 197, 197, 197);
 
 }
@@ -34,7 +36,7 @@ class GradientColors {
 
   static const List<Color> headerPostsGradient = [
     Color(0xff2E0347),
-    Color(0xff808080)
+    Color.fromRGBO(128, 128, 128, 0)
   ];
 
   static const List<Color> onPosterGradient = [

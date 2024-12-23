@@ -9,9 +9,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:tec/component/my_colors.dart';
 import 'package:tec/component/my_strings.dart';
 import 'package:tec/gen/assets.gen.dart';
-import 'package:tec/view/home_screen.dart';
-import 'package:tec/view/profile_screen.dart';
-import 'package:tec/view/register_intro.dart';
+import 'package:tec/view/main_screen/home_screen.dart';
+import 'package:tec/view/main_screen/profile_screen.dart';
+import 'package:tec/view/main_screen/register_intro.dart';
 import 'package:share_plus/share_plus.dart';
 
 
