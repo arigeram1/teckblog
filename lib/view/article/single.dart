@@ -3,31 +3,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
-import 'package:tec/component/my_colors.dart';
+import 'package:tec/constant/my_colors.dart';
 import 'package:tec/component/my_component.dart';
 import 'package:tec/controller/home_screen_controller.dart';
-import 'package:tec/controller/list_article_controller.dart';
-import 'package:tec/controller/single_article_controller.dart';
+import 'package:tec/controller/article/list_article_controller.dart';
+import 'package:tec/controller/article/single_article_controller.dart';
 import 'package:tec/gen/assets.gen.dart';
 import 'package:tec/models/fake_data.dart';
-import 'package:tec/view/article_list_screen.dart';
-
-class Single extends StatefulWidget {
-  @override
-  State<Single> createState() => _SingleState();
-}
-
-class _SingleState extends State<Single> {
-  SingleArticleController singleArticleController =
-      Get.put(SingleArticleController());
+import 'package:tec/view/article/article_list_screen.dart';
 
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    singleArticleController.getArticleInfo();
-  }
+
+class Single extends StatelessWidget {
+  var singleArticleController = Get.find<SingleArticleController>();
 
   @override
   Widget build(BuildContext context) {
@@ -262,48 +250,55 @@ class _SingleState extends State<Single> {
                   children: [
                     Stack(
                       children: [
-                        CachedNetworkImage(
-                          imageUrl:
-                          singleArticleController.relatedArticleList[index].image!,
-                          imageBuilder: (context, imageProvider) => Container(
-                            margin: const EdgeInsets.fromLTRB(15, 0, 0, 0),
-                            height: size.height / 5.08,
-                            width: size.width / 2.66,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: imageProvider, fit: BoxFit.cover),
-                                borderRadius: BorderRadius.circular(15)),
-                            foregroundDecoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                    colors: GradientColors.onBlogItemGradient,
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter),
-                                borderRadius: BorderRadius.circular(15)),
-                          ),
-                          placeholder: (context, url) {
-                            return Container(
-                              margin: const EdgeInsets.fromLTRB(15, 0, 0, 0),
-                              height: size.height / 5.08,
-                              width: size.width / 2.66,
-                              child: const Center(
-                                child: loading(),
-                              ),
-                            );
+                        InkWell(
+                          onTap: () async{
+                            var id = singleArticleController.relatedArticleList[index].id!;
+                            await singleArticleController.getArticleInfo(id);
+                            Get.forceAppUpdate();
                           },
-                          errorWidget: (context, url, error) {
-                            return Container(
+                          child: CachedNetworkImage(
+                            imageUrl:
+                            singleArticleController.relatedArticleList[index].image!,
+                            imageBuilder: (context, imageProvider) => Container(
                               margin: const EdgeInsets.fromLTRB(15, 0, 0, 0),
                               height: size.height / 5.08,
                               width: size.width / 2.66,
-                              child: const Center(
-                                child: Icon(
-                                  Icons.image_not_supported_outlined,
-                                  size: 40,
-                                  color: Colors.grey,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: imageProvider, fit: BoxFit.cover),
+                                  borderRadius: BorderRadius.circular(15)),
+                              foregroundDecoration: BoxDecoration(
+                                  gradient: const LinearGradient(
+                                      colors: GradientColors.onBlogItemGradient,
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter),
+                                  borderRadius: BorderRadius.circular(15)),
+                            ),
+                            placeholder: (context, url) {
+                              return Container(
+                                margin: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                                height: size.height / 5.08,
+                                width: size.width / 2.66,
+                                child: const Center(
+                                  child: loading(),
                                 ),
-                              ),
-                            );
-                          },
+                              );
+                            },
+                            errorWidget: (context, url, error) {
+                              return Container(
+                                margin: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                                height: size.height / 5.08,
+                                width: size.width / 2.66,
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.image_not_supported_outlined,
+                                    size: 40,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
                         ),
                         Positioned(
                           left: 8,

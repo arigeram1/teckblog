@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:tec/component/api_constant.dart';
+import 'package:tec/constant/api_constant.dart';
 import 'package:tec/models/article_model.dart';
 import 'package:tec/models/single_article_model.dart';
 import 'package:tec/models/tags_model.dart';
@@ -13,11 +13,11 @@ class SingleArticleController extends GetxController{
   RxList<TagsModel> relatedTagsList = RxList<TagsModel>();
 
 
-  Rx<SingleArticleModel> singleArticleModel = SingleArticleModel().obs;
+  Rx<SingleArticleModel> singleArticleModel = SingleArticleModel(null,null,null).obs;
 
 
-  getArticleInfo() async{
-    singleArticleModel = SingleArticleModel().obs;
+  getArticleInfo(String id) async{
+    singleArticleModel = SingleArticleModel(null,null,null).obs;
     loading.value = true;
     var userId = '1';
     var response = await DioService().getMethod(ApiConstant.baseUrl + 'article/get.php?command=info&id=$id&user_id=$userId');
@@ -35,13 +35,13 @@ class SingleArticleController extends GetxController{
         relatedTagsList.add(TagsModel.fromJson(element));
       });
 
-
       loading.value = false;
 
     }
 
-
   }
+
+
 
 
 }

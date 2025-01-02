@@ -1,4 +1,4 @@
-import 'package:tec/component/api_constant.dart';
+import 'package:tec/constant/api_constant.dart';
 
 class ArticleModel {
 
@@ -12,9 +12,9 @@ class ArticleModel {
   String? status;
   String? createdAt;
 
-  ArticleModel({required this.id , required this.title , required this.image ,
-    required this.catId , required this.catName , required this.author ,
-    required this.view,required this.status , required this.createdAt
+  ArticleModel({ this.id ,  this.title ,  this.image ,
+     this.catId ,  this.catName ,  this.author ,
+     this.view, this.status ,  this.createdAt
   });
 
 

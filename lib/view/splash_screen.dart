@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:tec/gen/assets.gen.dart';
+import 'package:tec/main.dart';
 import 'package:tec/view/main_screen/main_screen.dart';
-import 'package:tec/component/my_colors.dart';
+import 'package:tec/constant/my_colors.dart';
 
-class spalshScreen extends StatefulWidget {
+class SplashScreen extends StatefulWidget {
   @override
-  State<spalshScreen> createState() => _spalshScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _spalshScreenState extends State<spalshScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
 
     Future.delayed(const Duration(seconds: 3)).then((value){
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainScreen()));
+
+      Get.offAndToNamed(NamedRoute.routeMainScreen);
+
     });
     super.initState();
 

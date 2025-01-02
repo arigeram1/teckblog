@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:tec/controller/register_controller.dart';
 import 'package:tec/gen/assets.gen.dart';
-import 'package:tec/component/my_colors.dart';
-import 'package:tec/component/my_strings.dart';
+import 'package:tec/constant/my_colors.dart';
+import 'package:tec/constant/my_strings.dart';
 
 class RegisterIntro extends StatelessWidget {
+  var registerController = Get.find<RegisterController>();
   @override
   Widget build(BuildContext context) {
     // TODO: در این بخش به طراحی صفحه ابتدایی و اینترو ثبت نام پرداخته میشود
@@ -77,6 +80,7 @@ class RegisterIntro extends StatelessWidget {
                             padding: EdgeInsets.fromLTRB(
                                 size.width / 7, 5, size.width / 7, 30),
                             child: TextField(
+                              controller: registerController.emailTextEditingController,
                               style: textTheme.headlineLarge,
                               onChanged: (value) {
                               },
@@ -90,6 +94,7 @@ class RegisterIntro extends StatelessWidget {
                           ),
                           ElevatedButton(
                               onPressed: () {
+                                 registerController.register();
                                  Navigator.pop(context);
                                 _activateCodeBottomSheet(context, size, textTheme);
                               }, child: const Text('ادامه'))
@@ -129,6 +134,7 @@ class RegisterIntro extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(
                       size.width / 7, 5, size.width / 7, 30),
                   child: TextField(
+                    controller: registerController.activeCodeTextEditingController,
                     style: textTheme.headlineLarge,
                     onChanged: (value) {
 
@@ -145,7 +151,12 @@ class RegisterIntro extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                    onPressed: () {}, child: const Text('ادامه'))
+                    onPressed: ()
+                    {
+                      registerController.verify();
+
+                    }
+                    , child: const Text('ادامه'))
               ],
             ),
           ),
@@ -162,7 +173,7 @@ void showSnackBar(BuildContext context,String msg , Color color){
       Row(
         children: [
           Text(msg),
-          TextButton(onPressed: (){}, child: Text('تایید'))
+          TextButton(onPressed: (){}, child: const Text('تایید'))
         ],
       )
       , backgroundColor: color, )

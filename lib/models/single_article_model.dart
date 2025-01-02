@@ -1,6 +1,6 @@
 
 
-import 'package:tec/component/api_constant.dart';
+import 'package:tec/constant/api_constant.dart';
 
 class SingleArticleModel {
 
@@ -16,7 +16,14 @@ class SingleArticleModel {
   String? createdAt;
   bool? isFavorite;
 
-  SingleArticleModel();
+  SingleArticleModel(
+
+    this.title,
+    this.content,
+    this.image,
+
+
+      );
 
   SingleArticleModel.fromJson(Map<String,dynamic> element ){
 

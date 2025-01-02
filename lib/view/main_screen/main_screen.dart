@@ -1,17 +1,17 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tec/component/api_constant.dart';
+
 import 'package:tec/component/my_component.dart';
-import 'package:tec/controller/home_screen_controller.dart';
-import 'package:tec/services/dio_service.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:tec/component/my_colors.dart';
-import 'package:tec/component/my_strings.dart';
+
+import 'package:tec/controller/register_controller.dart';
+
+import 'package:tec/constant/my_colors.dart';
+import 'package:tec/constant/my_strings.dart';
 import 'package:tec/gen/assets.gen.dart';
 import 'package:tec/view/main_screen/home_screen.dart';
 import 'package:tec/view/main_screen/profile_screen.dart';
-import 'package:tec/view/main_screen/register_intro.dart';
+
 import 'package:share_plus/share_plus.dart';
 
 
@@ -21,9 +21,7 @@ class MainScreen extends StatelessWidget {
 
   RxInt selectedScreenIndex = 0.obs;
 
-  HomeScreenController homeScreenController = Get.put(HomeScreenController());
-
-
+  
   @override
   Widget build(BuildContext context) {
 
@@ -107,6 +105,8 @@ class MainScreen extends StatelessWidget {
   }
 }
 
+var registerController = Get.find<RegisterController>();
+
 class BottomNav extends StatelessWidget {
   const BottomNav({
     super.key,
@@ -160,7 +160,8 @@ class BottomNav extends StatelessWidget {
                 Expanded(
                     child: InkWell(
                       onTap: (){
-                        Navigator.of(context).push(CupertinoPageRoute(builder: (context) => RegisterIntro(),));
+                       // Navigator.of(context).push(CupertinoPageRoute(builder: (context) => RegisterIntro(),));
+                        registerController.toggleLogin();
                       },
                         child: ImageIcon(
                   AssetImage(Assets.icons.feather.path),

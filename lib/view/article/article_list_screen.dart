@@ -2,9 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tec/component/my_component.dart';
-import 'package:tec/controller/list_article_controller.dart';
-import 'package:tec/controller/single_article_controller.dart';
-import 'package:tec/view/single.dart';
+import 'package:tec/controller/article/list_article_controller.dart';
+import 'package:tec/controller/article/single_article_controller.dart';
+import 'package:tec/main.dart';
+import 'package:tec/view/article/single.dart';
 
 class ArticleListScreen extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class ArticleListScreen extends StatelessWidget {
     var textTheme = Theme.of(context).textTheme;
     var size = MediaQuery.of(context).size;
     ListArticleController listArticleController = Get.put(ListArticleController());
-    SingleArticleController singleArticleController = Get.put(SingleArticleController());
+    var singleArticleController = Get.find<SingleArticleController>();
     return SafeArea(
         child: Obx(
             () => Scaffold(
@@ -29,8 +30,9 @@ class ArticleListScreen extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return InkWell(
                             onTap: () {
-                              singleArticleController.id.value = listArticleController.articleList[index].id!;
-                              Get.to(Single());
+                              var id = listArticleController.articleList[index].id!;
+                              singleArticleController.getArticleInfo(id);
+                              Get.toNamed(NamedRoute.routeSingleArticleScreen);
                             },
                             child: SizedBox(
                               height: size.height / 7,
@@ -50,7 +52,7 @@ class ArticleListScreen extends StatelessWidget {
                                             image: DecorationImage(
                                                 image: imageProvider,
                                                 fit: BoxFit.cover),
-                                            borderRadius: BorderRadius.circular(25)),
+                                            borderRadius: BorderRadius.circular(30)),
                                       ),
                                       placeholder: (context, url) {
                                         return const Center(child: loading());

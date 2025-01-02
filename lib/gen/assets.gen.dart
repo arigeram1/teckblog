@@ -15,6 +15,10 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/createPodcast.png
+  AssetGenImage get createPodcast =>
+      const AssetGenImage('assets/icons/createPodcast.png');
+
   /// File path: assets/icons/feather.png
   AssetGenImage get feather => const AssetGenImage('assets/icons/feather.png');
 
@@ -31,8 +35,13 @@ class $AssetsIconsGen {
   /// File path: assets/icons/user.png
   AssetGenImage get user => const AssetGenImage('assets/icons/user.png');
 
+  /// File path: assets/icons/writeArticle.png
+  AssetGenImage get writeArticle =>
+      const AssetGenImage('assets/icons/writeArticle.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [feather, home, microphone, pencil, user];
+  List<AssetGenImage> get values =>
+      [createPodcast, feather, home, microphone, pencil, user, writeArticle];
 }
 
 class $AssetsImagesGen {
@@ -54,6 +63,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/robot.svg
   SvgGenImage get robot => const SvgGenImage('assets/images/robot.svg');
 
+  /// File path: assets/images/sadBot.svg
+  SvgGenImage get sadBot => const SvgGenImage('assets/images/sadBot.svg');
+
   /// File path: assets/images/search.png
   AssetGenImage get search => const AssetGenImage('assets/images/search.png');
 
@@ -62,7 +74,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values =>
-      [arrow, logo, profile, programming, robot, search, tag];
+      [arrow, logo, profile, programming, robot, sadBot, search, tag];
 }
 
 class Assets {
